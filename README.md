@@ -44,34 +44,34 @@ sub.GetBroadcastAddress();       // 192.168.113.255
 
 ### Get IP Address
 ```go
-sub.getIPAddress();       // 192.168.112.203
-sub.getIPAddressQuads();  // [ 192, 168, 112, 203 ]
-sub.getIPAddressHex();    // C0A870CB
-sub.getIPAddressBinary(); // 11000000101010000111000011001011
+sub.GetIPAddress();       // 192.168.112.203
+sub.GetIPAddressQuads();  // [ 192, 168, 112, 203 ]
+sub.GetIPAddressHex();    // C0A870CB
+sub.GetIPAddressBinary(); // 11000000101010000111000011001011
 ```
 
 ### Get Subnet Mask
 ```go
-sub.getSubnetMask();       // 255.255.254.0
-sub.getSubnetMaskQuads();  // [ 255, 255, 254, 0 ]
-sub.getSubnetMaskHex();    // FFFFFE00
-sub.getSubnetMaskBinary(); // 11111111111111111111111000000000
+sub.GetSubnetMask();       // 255.255.254.0
+sub.GetSubnetMaskQuads();  // [ 255, 255, 254, 0 ]
+sub.GetSubnetMaskHex();    // FFFFFE00
+sub.GetSubnetMaskBinary(); // 11111111111111111111111000000000
 ```
 
 ### Get Network Portion
 ```go
-sub.getNetworkPortion();       // 192.168.112.0
-sub.getNetworkPortionQuads();  // [ 192, 168, 112, 0 ]
-sub.getNetworkPortionHex();    // C0A87000
-sub.getNetworkPortionBinary(); // 11000000101010000111000000000000
+sub.GetNetworkPortion();       // 192.168.112.0
+sub.GetNetworkPortionQuads();  // [ 192, 168, 112, 0 ]
+sub.GetNetworkPortionHex();    // C0A87000
+sub.GetNetworkPortionBinary(); // 11000000101010000111000000000000
 ```
 
 ### Get Host Portion
 ```go
-sub.getHostPortion();       // 0.0.0.203
-sub.getHostPortionQuads();  // [ 0, 0, 0, 203 ]
-sub.getHostPortionHex();    // 000000CB
-sub.getHostPortionBinary(); // 00000000000000000000000011001011
+sub.GetHostPortion();       // 0.0.0.203
+sub.GetHostPortionQuads();  // [ 0, 0, 0, 203 ]
+sub.GetHostPortionHex();    // 000000CB
+sub.GetHostPortionBinary(); // 00000000000000000000000011001011
 ```
 
 
