@@ -13,7 +13,7 @@ func (s *Ip) GetHostPortionQuards() []int {
 	return convertQuardsToInt(strings.Split(s.hostCalculation("%d", "."), "."))
 }
 
-func (s *Ip) GetHostPortaionHex() string {
+func (s *Ip) GetHostPortionHex() string {
 	return s.hostCalculation("%02X", "")
 }
 

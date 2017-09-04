@@ -14,6 +14,19 @@ type TestCase struct {
 	ipAddressHex           string
 	ipAddressBinary        string
 	subnetMask             string
+	subnetMaskQuards       []int
+	subnetMaskHex          string
+	subnetMaskBinary       string
+
+	networkPortion       string
+	networkPortionQuards []int
+	networkPortionHex    string
+	networkPortionBinary string
+
+	hostPortion       string
+	hostPortionQuards []int
+	hostPortionHex    string
+	hostPortionBinary string
 }
 
 func builder() TestCase {
@@ -28,8 +41,21 @@ func builder() TestCase {
 	test.ipAddressQuards = []int{192, 168, 112, 203}
 	test.ipAddressHex = "C0A870CB"
 	test.ipAddressBinary = "11000000101010000111000011001011"
+	// Subnet
 	test.subnetMask = "255.255.254.0"
-
+	test.subnetMaskQuards = []int{255, 255, 254, 0}
+	test.subnetMaskHex = "FFFFFE00"
+	test.subnetMaskBinary = "11111111111111111111111000000000"
+	// Network Portion
+	test.networkPortion = "192.168.112.0"
+	test.networkPortionQuards = []int{192, 168, 112, 0}
+	test.networkPortionHex = "C0A87000"
+	test.networkPortionBinary = "11000000101010000111000000000000"
+	// Network Portion
+	test.hostPortion = "0.0.0.203"
+	test.hostPortionQuards = []int{0, 0, 0, 203}
+	test.hostPortionHex = "000000CB"
+	test.hostPortionBinary = "00000000000000000000000011001011"
 	return test
 }
 
@@ -129,5 +155,140 @@ func TestGetIPAddressBinary(t *testing.T) {
 
 	if wants != got {
 		t.Errorf("GetIpAddressBinary Failed: Wants %v Got %v", wants, got)
+	}
+}
+
+func TestGetSubnetMask(t *testing.T) {
+	wants := builder().subnetMask
+	got := ip().GetSubnetMask()
+
+	if wants != got {
+		t.Errorf("GetSubnetMask Failed: Wants %v Got %v", wants, got)
+	}
+}
+
+func TestGetSubnetMaskQuards(t *testing.T) {
+	wants := builder().subnetMaskQuards
+	got := ip().GetSubnetMaskQuards()
+
+	if got[0] != wants[0] {
+		t.Errorf("First Value of GetSubnetMaskQuards Failed: Wants %v Got %v", wants[0], got[0])
+	}
+	if got[1] != wants[1] {
+		t.Errorf("Second Value of GetSubnetMaskQuards Failed: Wants %v Got %v", wants[1], got[1])
+	}
+	if got[2] != wants[2] {
+		t.Errorf("Third Value of GetSubnetMaskQuards Failed: Wants %v Got %v", wants[2], got[2])
+	}
+	if got[3] != wants[3] {
+		t.Errorf("Fourth Value of GetSubnetMaskQuards Failed: Wants %v Got %v", wants[3], got[3])
+	}
+}
+
+func TestGetSubnetMaskHex(t *testing.T) {
+	wants := builder().subnetMaskHex
+	got := ip().GetSubnetMaskHex()
+
+	if wants != got {
+		t.Errorf("GetSubnetMaskHex Failed: Wants %v Got %v", wants, got)
+	}
+}
+
+func TestGetSubnetMaskBinary(t *testing.T) {
+	wants := builder().subnetMaskBinary
+	got := ip().GetSubnetMaskBinary()
+
+	if wants != got {
+		t.Errorf("GetSubnetMaskBinary Failed: Wants %v Got %v", wants, got)
+	}
+}
+
+func TestGetNetworkPortion(t *testing.T) {
+	wants := builder().networkPortion
+	got := ip().GetNetworkPortion()
+
+	if wants != got {
+		t.Errorf("GetNetworkPortion Failed: Wants %v Got %v", wants, got)
+	}
+}
+
+func TestGetNetworkPortionQuards(t *testing.T) {
+	wants := builder().networkPortionQuards
+	got := ip().GetNetworkPortionQuards()
+
+	if got[0] != wants[0] {
+		t.Errorf("First Value of GetNetworkPortionQuards Failed: Wants %v Got %v", wants[0], got[0])
+	}
+	if got[1] != wants[1] {
+		t.Errorf("Second Value of GetNetworkPortionQuards Failed: Wants %v Got %v", wants[1], got[1])
+	}
+	if got[2] != wants[2] {
+		t.Errorf("Third Value of GetNetworkPortionQuards Failed: Wants %v Got %v", wants[2], got[2])
+	}
+	if got[3] != wants[3] {
+		t.Errorf("Fourth Value of GetNetworkPortionQuards Failed: Wants %v Got %v", wants[3], got[3])
+	}
+}
+
+func TestGetNetworkPortionHex(t *testing.T) {
+	wants := builder().networkPortionHex
+	got := ip().GetNetworkPortionHex()
+
+	if wants != got {
+		t.Errorf("GetNetworkPortionHex Failed: Wants %v Got %v", wants, got)
+	}
+}
+
+func TestGetNetworkPortionBinary(t *testing.T) {
+	wants := builder().networkPortionBinary
+	got := ip().GetNetworkPortionBinary()
+
+	if wants != got {
+		t.Errorf("GetSubnetMaskBinary Failed: Wants %v Got %v", wants, got)
+	}
+}
+
+func TestGetHostPortion(t *testing.T) {
+	wants := builder().hostPortion
+	got := ip().GetHostPortion()
+
+	if wants != got {
+		t.Errorf("GetHostPortion Failed: Wants %v Got %v", wants, got)
+	}
+}
+
+func TestGetHostPortionQuards(t *testing.T) {
+	wants := builder().hostPortionQuards
+	got := ip().GetHostPortionQuards()
+
+	if got[0] != wants[0] {
+		t.Errorf("First Value of GetHostPortionQuards Failed: Wants %v Got %v", wants[0], got[0])
+	}
+	if got[1] != wants[1] {
+		t.Errorf("Second Value of GetHostPortionQuards Failed: Wants %v Got %v", wants[1], got[1])
+	}
+	if got[2] != wants[2] {
+		t.Errorf("Third Value of GetHostPortionQuards Failed: Wants %v Got %v", wants[2], got[2])
+	}
+	if got[3] != wants[3] {
+		t.Errorf("Fourth Value of GetHostPortionQuards Failed: Wants %v Got %v", wants[3], got[3])
+	}
+}
+
+func TestGetHostPortionHex(t *testing.T) {
+	wants := builder().hostPortionHex
+	got := ip().GetHostPortionHex()
+
+	if wants != got {
+		t.Errorf("GetHostPortionHex Failed: Wants %v Got %v", wants, got)
+	}
+}
+
+func TestGetHostPortionBinary(t *testing.T) {
+	wants := builder().hostPortionBinary
+	got := ip().GetHostPortionBinary()
+
+	if wants != got {
+		t.Errorf("GetSubnetMaskBinary Failed: Wants %v Got %v", wants, got)
 	}
 }

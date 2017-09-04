@@ -13,7 +13,7 @@ func (s *Ip) GetNetworkPortionQuards() []int {
 	return convertQuardsToInt(strings.Split(s.networkCalculation("%d", "."), "."))
 }
 
-func (s *Ip) GetNetworkPortaionHex() string {
+func (s *Ip) GetNetworkPortionHex() string {
 	return s.networkCalculation("%02X", "")
 }
 
