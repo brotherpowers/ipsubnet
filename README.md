@@ -2,6 +2,9 @@
 
 Network calculator for subnet mask and other classless (CIDR) network information.
 
+[![Build Status](https://travis-ci.org/brotherpowers/ipsubnet.svg?branch=master)](https://travis-ci.org/brotherpowers/ipsubnet)
+[![GoDoc](https://godoc.org/github.com/brotherpowers/ipsubnet?status.svg)](https://github.com/brotherpowers/ipsubnet)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/brotherpowers/ipsubnet)
 
 ### Calculations
  * IP address network subnet masks, network and host portions, and provides aggregated reports.
