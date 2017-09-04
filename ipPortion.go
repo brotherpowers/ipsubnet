@@ -23,7 +23,7 @@ func (s *Ip) GetIPAddressQuads() []int {
 	return convertQuardsToInt(splits)
 }
 
-func (s *Ip) ipAddressCalculation(format, seperator string) string {
+func (s *Ip) ipAddressCalculation(format, separator string) string {
 
 	splits := s.GetIPAddressQuads()
 	formatted := []string{}
@@ -32,5 +32,5 @@ func (s *Ip) ipAddressCalculation(format, seperator string) string {
 		formatted = append(formatted, fmt.Sprintf(format, quard))
 	}
 
-	return strings.Join(formatted, seperator)
+	return strings.Join(formatted, separator)
 }
