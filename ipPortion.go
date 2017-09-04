@@ -14,7 +14,7 @@ func (s *Ip) GetIPAddressHex() string {
 }
 
 func (s *Ip) GetIPAddressBinary() string {
-	return s.ipAddressCalculation("%b", ".")
+	return s.ipAddressCalculation("%08b", "")
 }
 
 func (s *Ip) GetIPAddressQuads() []int {
