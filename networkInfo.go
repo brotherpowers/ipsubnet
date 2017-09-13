@@ -2,12 +2,11 @@ package ipsubnet
 
 import (
 	"fmt"
-	"math"
 	"strings"
 )
 
 func (s *Ip) GetNumberIPAddresses() int {
-	return int(math.Pow(2, float64((32 - s.networkSize))))
+	return 2 << (uint(32-s.networkSize) - 1)
 }
 
 func (s *Ip) GetNumberAddressableHosts() int {
