@@ -6,7 +6,7 @@ import (
 )
 
 func (s *Ip) GetNumberIPAddresses() int {
-	return 2 << (uint(32-s.networkSize) - 1)
+	return 2 << uint(31-s.networkSize)
 }
 
 func (s *Ip) GetNumberAddressableHosts() int {
