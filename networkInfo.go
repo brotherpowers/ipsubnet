@@ -37,3 +37,15 @@ func (s *Ip) GetBroadcastAddress() string {
 
 	return strings.Join(networkRangeQuads, ".")
 }
+
+func (s *Ip) GetHostMaxAddress() string {
+	networkQuads := s.GetNetworkPortionQuards()
+	numberIPAddress := s.GetNumberIPAddresses()
+	networkRangeQuads := []string{}
+	networkRangeQuads = append(networkRangeQuads, fmt.Sprintf("%d", (networkQuads[0]&(s.subnet_mask>>24))+(((numberIPAddress-2)>>24)&0xFF)))
+	networkRangeQuads = append(networkRangeQuads, fmt.Sprintf("%d", (networkQuads[1]&(s.subnet_mask>>16))+(((numberIPAddress-2)>>16)&0xFF)))
+	networkRangeQuads = append(networkRangeQuads, fmt.Sprintf("%d", (networkQuads[2]&(s.subnet_mask>>8))+(((numberIPAddress-2)>>8)&0xFF)))
+	networkRangeQuads = append(networkRangeQuads, fmt.Sprintf("%d", (networkQuads[3]&(s.subnet_mask>>0))+(((numberIPAddress-2)>>0)&0xFF)))
+
+	return strings.Join(networkRangeQuads, ".")
+}
