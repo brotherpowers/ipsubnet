@@ -8,7 +8,6 @@ builds:
   - GO111MODULE=on
   - CGO_ENABLED=0
   goos:
-  - freebsd
   - windows
   - darwin
   - linux
