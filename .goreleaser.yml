@@ -1,0 +1,46 @@
+before:
+  hooks:
+    - go mod download
+    - go test ./...
+builds:
+- main: ./cmd/ipsubnet.go
+  env:
+  - GO111MODULE=on
+  - CGO_ENABLED=0
+  goos:
+  - freebsd
+  - windows
+  - darwin
+  - linux
+  goarch:
+  - amd64
+  - arm
+  - arm64
+  # GOARM to build for when GOARCH is arm.
+  # For more info refer to: https://golang.org/doc/install/source#environment
+  # Default is only 6.
+  goarm:
+    - 6
+    - 7
+  # List of combinations of GOOS + GOARCH + GOARM to ignore.
+  # Default is empty.
+  ignore:
+    - goos: darwin
+      goarch: 386
+archives:
+- replacements:
+    darwin: macos
+    linux: linux
+    windows: windows
+    386: i386
+    amd64: x86_64
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
