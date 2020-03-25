@@ -13,7 +13,6 @@ builds:
   - linux
   goarch:
   - amd64
-  - arm
   - arm64
   # GOARM to build for when GOARCH is arm.
   # For more info refer to: https://golang.org/doc/install/source#environment
