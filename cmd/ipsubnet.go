@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"fmt"
 	"github.com/arnobroekhof/ipsubnet"
@@ -13,11 +12,11 @@ var (
 )
 
 type NetworkInfo struct {
-	numberOfIpaddresses      int      `json:"number-of-addresses"`
-	numberOfAddressableHosts int      `json:"number-of-available_addresses"`
-	ipRange                  []string `json:"ip-range"`
-	networkBits              int      `json:"network-bits"`
-	broadcastAddress         string   `json:"broadcast-address"`
+	NumberOfIpaddresses      int      `json:"number-of-addresses"`
+	NumberOfAddressableHosts int      `json:"number-of-available_addresses"`
+	IpRange                  []string `json:"ip-range"`
+	NetworkBits              int      `json:"network-bits"`
+	BroadcastAddress         string   `json:"broadcast-address"`
 }
 
 func init() {
@@ -31,22 +30,17 @@ func main() {
 	sub := ipsubnet.SubnetCalculator(network, mask)
 
 	n := NetworkInfo{
-		numberOfIpaddresses:      sub.GetNumberIPAddresses(),
-		numberOfAddressableHosts: sub.GetNumberAddressableHosts(),
-		ipRange:                  sub.GetIPAddressRange(),
-		networkBits:              sub.GetNetworkSize(),
-		broadcastAddress:         sub.GetBroadcastAddress(),
+		NumberOfIpaddresses:      sub.GetNumberIPAddresses(),
+		NumberOfAddressableHosts: sub.GetNumberAddressableHosts(),
+		IpRange:                  sub.GetIPAddressRange(),
+		NetworkBits:              sub.GetNetworkSize(),
+		BroadcastAddress:         sub.GetBroadcastAddress(),
 	}
 
 	fmt.Printf("network:\t\t\t%s/%d\n", network, mask)
-	fmt.Printf("number-of-addresses:\t\t%d\n", n.numberOfIpaddresses)
-	fmt.Printf("number-of-available-addresses:\t%d\n", n.numberOfAddressableHosts)
-	fmt.Printf("ip-range:\t\t\t[ %s - %s ]\n", n.ipRange[0], n.ipRange[1])
-	fmt.Printf("broadcast-address:\t\t%s\n",n.broadcastAddress)
+	fmt.Printf("number-of-addresses:\t\t%d\n", n.NumberOfIpaddresses)
+	fmt.Printf("number-of-available-addresses:\t%d\n", n.NumberOfAddressableHosts)
+	fmt.Printf("ip-range:\t\t\t[ %s - %s ]\n", n.IpRange[0], n.IpRange[1])
+	fmt.Printf("broadcast-address:\t\t%s\n", n.BroadcastAddress)
 
-}
-
-func prettyPrint(i interface{}) string {
-	s, _ := json.MarshalIndent(i, "", "\t")
-	return string(s)
 }
