@@ -9,7 +9,7 @@ func (s *Ip) GetNetworkPortion() string {
 	return s.networkCalculation("%d", ".")
 }
 
-func (s *Ip) GetNetworkPortionQuards() []int {
+func (s *Ip) GetNetworkPortionQuards() []byte {
 	return convertQuardsToInt(strings.Split(s.networkCalculation("%d", "."), "."))
 }
 
@@ -24,10 +24,10 @@ func (s *Ip) GetNetworkPortionBinary() string {
 func (s *Ip) networkCalculation(format, separator string) string {
 	splits := s.GetIPAddressQuads()
 	networkQuards := []string{}
-	networkQuards = append(networkQuards, fmt.Sprintf(format, splits[0]&(s.subnet_mask>>24)))
-	networkQuards = append(networkQuards, fmt.Sprintf(format, splits[1]&(s.subnet_mask>>16)))
-	networkQuards = append(networkQuards, fmt.Sprintf(format, splits[2]&(s.subnet_mask>>8)))
-	networkQuards = append(networkQuards, fmt.Sprintf(format, splits[3]&(s.subnet_mask>>0)))
+	networkQuards = append(networkQuards, fmt.Sprintf(format, splits[0]&byte(s.subnet_mask>>24)))
+	networkQuards = append(networkQuards, fmt.Sprintf(format, splits[1]&byte(s.subnet_mask>>16)))
+	networkQuards = append(networkQuards, fmt.Sprintf(format, splits[2]&byte(s.subnet_mask>>8)))
+	networkQuards = append(networkQuards, fmt.Sprintf(format, splits[3]&byte(s.subnet_mask>>0)))
 
 	return strings.Join(networkQuards, separator)
 }

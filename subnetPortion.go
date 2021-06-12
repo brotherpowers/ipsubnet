@@ -9,7 +9,7 @@ func (s *Ip) GetSubnetMask() string {
 	return s.subnetCalculation("%d", ".")
 }
 
-func (s *Ip) GetSubnetMaskQuards() []int {
+func (s *Ip) GetSubnetMaskQuards() []byte {
 	return convertQuardsToInt(strings.Split(s.subnetCalculation("%d", "."), "."))
 }
 

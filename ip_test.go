@@ -4,27 +4,27 @@ import "testing"
 
 type TestCase struct {
 	ip                     string
-	subnet                 int
-	numberIPAddresses      int
-	numberAddressableHosts int
+	subnet                 int64
+	numberIPAddresses      int64
+	numberAddressableHosts int64
 	ipAddressRange         []string
-	networkSize            int
+	networkSize            int64
 	broadCastAddress       string
-	ipAddressQuards        []int
+	ipAddressQuards        []byte
 	ipAddressHex           string
 	ipAddressBinary        string
 	subnetMask             string
-	subnetMaskQuards       []int
+	subnetMaskQuards       []byte
 	subnetMaskHex          string
 	subnetMaskBinary       string
 
 	networkPortion       string
-	networkPortionQuards []int
+	networkPortionQuards []byte
 	networkPortionHex    string
 	networkPortionBinary string
 
 	hostPortion       string
-	hostPortionQuards []int
+	hostPortionQuards []byte
 	hostPortionHex    string
 	hostPortionBinary string
 }
@@ -38,22 +38,22 @@ func builder() TestCase {
 	test.ipAddressRange = []string{"192.168.112.0", "192.168.113.255"}
 	test.networkSize = 23
 	test.broadCastAddress = "192.168.113.255"
-	test.ipAddressQuards = []int{192, 168, 112, 203}
+	test.ipAddressQuards = []byte{192, 168, 112, 203}
 	test.ipAddressHex = "C0A870CB"
 	test.ipAddressBinary = "11000000101010000111000011001011"
 	// Subnet
 	test.subnetMask = "255.255.254.0"
-	test.subnetMaskQuards = []int{255, 255, 254, 0}
+	test.subnetMaskQuards = []byte{255, 255, 254, 0}
 	test.subnetMaskHex = "FFFFFE00"
 	test.subnetMaskBinary = "11111111111111111111111000000000"
 	// Network Portion
 	test.networkPortion = "192.168.112.0"
-	test.networkPortionQuards = []int{192, 168, 112, 0}
+	test.networkPortionQuards = []byte{192, 168, 112, 0}
 	test.networkPortionHex = "C0A87000"
 	test.networkPortionBinary = "11000000101010000111000000000000"
 	// Network Portion
 	test.hostPortion = "0.0.0.203"
-	test.hostPortionQuards = []int{0, 0, 0, 203}
+	test.hostPortionQuards = []byte{0, 0, 0, 203}
 	test.hostPortionHex = "000000CB"
 	test.hostPortionBinary = "00000000000000000000000011001011"
 	return test

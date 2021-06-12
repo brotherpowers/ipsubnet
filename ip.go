@@ -4,11 +4,11 @@ import "strconv"
 
 type Ip struct {
 	ip          string
-	networkSize int
-	subnet_mask int
+	networkSize int64
+	subnet_mask int64
 }
 
-func SubnetCalculator(ip string, networkSize int) *Ip {
+func SubnetCalculator(ip string, networkSize int64) *Ip {
 
 	s := &Ip{
 		ip:          ip,
@@ -19,15 +19,15 @@ func SubnetCalculator(ip string, networkSize int) *Ip {
 	return s
 }
 
-func convertQuardsToInt(splits []string) []int {
-	quardsInt := []int{}
+func convertQuardsToInt(splits []string) []byte {
+	quardsInt := []byte{}
 
 	for _, quard := range splits {
 		j, err := strconv.Atoi(quard)
 		if err != nil {
 			panic(err)
 		}
-		quardsInt = append(quardsInt, j)
+		quardsInt = append(quardsInt, byte(j))
 	}
 
 	return quardsInt
