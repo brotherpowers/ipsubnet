@@ -17,7 +17,7 @@ func (s *Ip) GetIPAddressBinary() string {
 	return s.ipAddressCalculation("%08b", "")
 }
 
-func (s *Ip) GetIPAddressQuads() []int {
+func (s *Ip) GetIPAddressQuads() []byte {
 	splits := strings.Split(s.ip, ".")
 
 	return convertQuardsToInt(splits)
